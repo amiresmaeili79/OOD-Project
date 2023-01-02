@@ -7,6 +7,10 @@ class RepositoryInterface(ABC):
     """
 
     @abstractmethod
+    def config(configuration_str: str):
+        raise NotImplementedError("implement me!")
+
+    @abstractmethod
     def get(**kwargs):
         raise NotImplementedError("Implement Me")
 
