@@ -1,16 +1,14 @@
-from .abstract_repository import AbstractRepository
-
+from abstract_repository import AbstractRepository
 
 
 class DummyRepository(AbstractRepository):
-
     """
-    Dummpy repo is just a toy class to demonestrate DB connection
+    Dummy repo is just a toy class to demonstrate DB connection
     """
 
     def __init__(self) -> None:
         self.objects = []
-    
-    def config(configuration_str: str):
-        # in dummpy repo it is already configured
+
+    def config(self, configuration_str: str):
+        # in dummy repo it is already configured
         return None
