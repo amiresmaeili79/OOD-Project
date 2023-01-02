@@ -7,19 +7,19 @@ class Award:
         self.name = name
         self.year = 0
 
-    def getName(self):
+    def get_name(self):
         #code
         return True     
 
-    def setName(self,name):
+    def set_name(self,name):
         #code
         return True     
 
-    def getYear(self):
+    def get_year(self):
         #code
         return True  
 
-    def setYear(self,year):
+    def set_year(self,year):
         #code
         return True      
 
