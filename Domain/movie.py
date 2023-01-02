@@ -17,67 +17,67 @@ class Movie:
         #code
         return True
 
-    def getRating(self):
+    def get_rating(self):
         #code
         return True        
 
-    def addAwards(self,Award):
+    def add_awards(self,Award):
         #code
         return True
 
-    def addActors(self,Actor):
+    def add_actors(self,Actor):
         #code
         return True    
 
-    def getActors(self):
+    def get_actors(self):
         #code
         return True       
 
-    def getName(self):
+    def get_name(self):
         #code
         return True     
 
-    def setName(self,name):
+    def set_name(self,name):
         #code
         return True     
 
-    def getGenre(self):
+    def get_genre(self):
         #code
         return True  
 
-    def setGenre(self,Genre):
+    def set_genre(self,Genre):
         #code
         return True      
 
-    def getDuration(self):
+    def get_duration(self):
         #code
         return True   
 
-    def setDuration(self, duration):
+    def set_duration(self, duration):
         #code
         return True               
     
-    def getYear(self):
+    def get_year(self):
         #code
         return True   
 
-    def setYear(self,year):
+    def set_year(self,year):
         #code
         return True      
 
-    def getDescription(self):
+    def get_description(self):
         #code
         return True  
 
-    def setDescription(self,description):
+    def set_description(self,description):
         #code
         return True    
 
-    def addComment(self,comment):
+    def add_comment(self,comment):
         #code
         return True              
 
-    def getComments(self):
+    def get_comments(self):
         #code
         return True    
 
