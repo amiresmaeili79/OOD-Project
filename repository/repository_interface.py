@@ -3,29 +3,29 @@ from abc import ABC, abstractmethod
 
 class RepositoryInterface(ABC):
     """
-    Interface for respositories
+    Interface for repositories
     """
 
     @abstractmethod
-    def config(configuration_str: str):
+    def config(self, configuration_str: str):
         raise NotImplementedError("implement me!")
 
     @abstractmethod
-    def get(**kwargs):
+    def get(self, **kwargs):
         raise NotImplementedError("Implement Me")
 
     @abstractmethod
-    def create(**kwargs):
+    def create(self, **kwargs):
         raise NotImplementedError("Implement Me")
 
     @abstractmethod
-    def update(**kwargs):
+    def update(self, **kwargs):
         raise NotImplementedError("Implement Me")
 
     @abstractmethod
-    def list(**kwargs):
+    def list(self, **kwargs):
         raise NotImplementedError("Implement Me")
 
     @abstractmethod
-    def delete(**kwargs):
+    def delete(self, **kwargs):
         raise NotImplementedError("Implement Me")
