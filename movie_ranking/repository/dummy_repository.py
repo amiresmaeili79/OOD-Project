@@ -1,4 +1,4 @@
-from abstract_repository import AbstractRepository
+from .abstract_repository import AbstractRepository
 
 
 class DummyRepository(AbstractRepository):
