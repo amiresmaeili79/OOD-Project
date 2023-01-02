@@ -1,7 +1,7 @@
 from typing import List
 
-from actor import Actor
-from award import Award
+from .actor import Actor
+from .award import Award
 
 
 class Movie:
