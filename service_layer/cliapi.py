@@ -20,5 +20,5 @@ class CliApi:
     def get_ranking(self) -> [Movie]:
         pass
 
-    def udpate_ranking(self):
+    def udpate_ranking(self) -> None:
         pass
