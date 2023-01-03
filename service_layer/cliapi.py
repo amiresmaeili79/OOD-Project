@@ -2,7 +2,7 @@ from movie_ranking.domain.movie import  Movie
 from movie_ranking.repository.repository_interface import RepositoryInterface
 from isearch import SearchInterface
 
-class CliApi:
+class CliApi(ApiInterface):
 
     def __init__(self, repository: RepositoryInterface, search: SearchInterface ) -> None:
         this.repository = repository
