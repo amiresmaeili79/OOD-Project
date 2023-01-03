@@ -18,9 +18,17 @@ if __name__ == "__main__":
 
     print(repo_registry.movie.list())
 
-    print("==============")
+    print("\n")
 
     cli_api = CliApi(movie_repo, name_search)
 
     ranking = cli_api.get_ranking()
     print(ranking)
+
+    print("\nCreate movies :")
+    movie = cli_api.create_movie()
+    print(movie)
+
+    print("\nUpdate movies :")
+    movie = cli_api.update_movie()
+    print(movie)

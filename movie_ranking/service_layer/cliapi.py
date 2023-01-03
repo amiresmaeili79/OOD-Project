@@ -16,10 +16,12 @@ class CliApi(ApiInterface):
         pass
 
     def create_movie(self) -> Movie:
-        pass
+        print("insert movie name:")
+        return self.repository.create(Movie(0, 0, "", "", 0, 0, "", [], []))
 
     def update_movie(self) -> Movie:
-        pass
+        print("insert movie new name")
+        return self.repository.update(Movie(0, 0, "", "", 0, 0, "", [], []))
 
     def get_ranking(self) -> List[Movie]:
         return self.repository.list()
