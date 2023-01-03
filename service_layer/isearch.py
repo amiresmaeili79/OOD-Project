@@ -1,6 +1,6 @@
 from movie_ranking.domain.movie import  Movie
 
 
-class ISearch:
+class SearchInterface:
     def search(self, name) -> [Movie]:
         pass

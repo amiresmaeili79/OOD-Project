@@ -1,6 +1,6 @@
 from isearch import ISearch
 
 
-class NameSearch(ISearch):
+class NameSearch(SearchInterface):
     def search(self, name) -> [Movie]:
         pass
