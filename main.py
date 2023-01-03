@@ -11,7 +11,7 @@ if __name__ == "__main__":
     actor_repo = ActorRepository()
     actor_repo.fill_mock()
 
-    name_search = NameSearch("")
+    name_search = NameSearch()
 
     repo_registry.add_repository(movie_repo, "")
     repo_registry.add_repository(actor_repo, "")

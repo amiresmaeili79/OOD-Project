@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
-from movie_ranking.domain.movie import  Movie
+from typing import List
+
+from movie_ranking.domain.movie import Movie
 
 
 class ApiInterface(ABC):
 
     @abstractmethod
-    def search(self, name, type) -> [Movie]:
+    def search(self, name, type) -> List[Movie]:
         raise NotImplementedError("implement me!")
 
     @abstractmethod
@@ -17,9 +19,9 @@ class ApiInterface(ABC):
         raise NotImplementedError("implement me!")
 
     @abstractmethod
-    def get_ranking(self) -> [Movie]:
+    def get_ranking(self) -> List[Movie]:
         raise NotImplementedError("implement me!")
 
     @abstractmethod
-    def udpate_ranking(self) -> None:
+    def update_ranking(self) -> None:
         raise NotImplementedError("implement me!")
