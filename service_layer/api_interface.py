@@ -6,20 +6,20 @@ class ApiInterface(ABC):
 
     @abstractmethod
     def search(self, name, type) -> [Movie]:
-        pass
+        raise NotImplementedError("implement me!")
 
     @abstractmethod
     def create_movie(self) -> Movie:
-        pass
+        raise NotImplementedError("implement me!")
 
     @abstractmethod
     def update_movie(self) -> Movie:
-        pass
+        raise NotImplementedError("implement me!")
 
     @abstractmethod
     def get_ranking(self) -> [Movie]:
-        pass
+        raise NotImplementedError("implement me!")
 
     @abstractmethod
     def udpate_ranking(self) -> None:
-        pass
+        raise NotImplementedError("implement me!")
