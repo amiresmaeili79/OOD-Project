@@ -18,4 +18,9 @@ if __name__ == "__main__":
 
     print(repo_registry.movie.list())
 
+    print("==============")
+
     cli_api = CliApi(movie_repo, name_search)
+
+    ranking = cli_api.get_ranking()
+    print(ranking)

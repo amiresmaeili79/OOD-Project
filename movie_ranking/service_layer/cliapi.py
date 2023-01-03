@@ -22,7 +22,7 @@ class CliApi(ApiInterface):
         pass
 
     def get_ranking(self) -> List[Movie]:
-        pass
+        return self.repository.list()
 
     def update_ranking(self) -> None:
         pass
