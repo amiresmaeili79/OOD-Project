@@ -1,13 +1,14 @@
 from typing import List
 
-from actor import Actor
-from award import Award
-from domain.comment import Comment
+from .actor import Actor
+from .award import Award
+from .comment import Comment
 
 
 class Movie:
 
-    def __init__(self, pk: int, rating: int, rate_cnts: int, name: str, genre: str, duration: int, year: int, description: str,
+    def __init__(self, pk: int, rating: int, rate_cnts: int, name: str, genre: str, duration: int, year: int,
+                 description: str,
                  awards: List[Award], actors: List[Actor], comments: List[Comment]):
         self.pk = pk
         self.rating = rating
@@ -19,21 +20,18 @@ class Movie:
         self.awards = awards
         self.stars = actors
         self.rate_cnts = rate_cnts
-        self.comments=comments
+        self.comments = comments
 
     def rate(self, rating_num: int):
-
-        current_rate = self.rate*self.rate_cnts
-        self.rate_cnts +=1
-        self.rate = current_rate/self.rate_cnts
-
+        current_rate = self.rate * self.rate_cnts
+        self.rate_cnts += 1
+        self.rate = current_rate / self.rate_cnts
 
     def get_rating(self):
         return self.rate
 
     def add_awards(self, award: Award):
         self.awards.append(award)
-
 
     def add_actors(self, actor: Actor):
         self.stars.append(actor)
