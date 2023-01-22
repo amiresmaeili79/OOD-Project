@@ -6,17 +6,13 @@ class Actor:
         self.age = age
 
     def get_name(self):
-        # code
-        return True
+        return self.name
 
     def set_name(self, name: str):
-        # code
-        return True
+        self.name = name
 
     def get_age(self):
-        # code
-        return True
+        return self.age
 
     def set_age(self, age: int):
-        # code
-        return True
+        self.age = age
