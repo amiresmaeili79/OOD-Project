@@ -54,9 +54,9 @@ class TestMovieRepository(TestCase):
 
         self.movies = []
         for i in range(10):
-            movie = Movie(i, i, f"Movie_{i}", f"Genre_{i}", 120 + 10 * i, 1995 + i, f"Description_{i}", [
+            movie = Movie(i, i, 100, f"Movie_{i}", f"Genre_{i}", 120 + 10 * i, 1995 + i, f"Description_{i}", [
                 Award(i, f"Award_{i}", 1995 + i), Award(i, f"Award_{i + 1}", 1998 + i)
-            ], [Actor(i, f"Actor_{i}", 30 + i), Actor(i, f"Actor_{i + 1}", 40 + i)])
+            ], [Actor(i, f"Actor_{i}", 30 + i), Actor(i, f"Actor_{i + 1}", 40 + i)], [])
             self.movies.append(movie)
 
     def test_add_movie(self):
