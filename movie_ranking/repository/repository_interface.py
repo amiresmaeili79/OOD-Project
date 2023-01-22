@@ -11,21 +11,21 @@ class RepositoryInterface(ABC):
         raise NotImplementedError("implement me!")
 
     @abstractmethod
-    def get(self, **kwargs):
+    def get(self, *args, **kwargs):
         raise NotImplementedError("Implement Me")
 
     @abstractmethod
-    def create(self, **kwargs):
+    def create(self, *args, **kwargs):
         raise NotImplementedError("Implement Me")
 
     @abstractmethod
-    def update(self, **kwargs):
+    def update(self, *args, **kwargs):
         raise NotImplementedError("Implement Me")
 
     @abstractmethod
-    def list(self, **kwargs):
+    def list(self, *args, **kwargs):
         raise NotImplementedError("Implement Me")
 
     @abstractmethod
-    def delete(self, **kwargs):
+    def delete(self, *args, **kwargs):
         raise NotImplementedError("Implement Me")

@@ -28,8 +28,7 @@ class ActorRepository(RepositoryInterface, DummyRepository):
         return list(self.objects.values())
 
     def delete(self, pk: int):
-        if pk in self.objects:
-            del self.objects[pk]
+        del self.objects[pk]
 
     def fill_mock(self):
         for i in range(10):
