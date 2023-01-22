@@ -70,7 +70,7 @@ class Movie:
         self.description = description
 
     def add_comment(self, comment: str):
-        self.add_comment(comment)
+        self.comments.append(comment)
 
     def get_comments(self):
         return self.comments
