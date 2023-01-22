@@ -16,19 +16,4 @@ if __name__ == "__main__":
     repo_registry.add_repository(movie_repo, "")
     repo_registry.add_repository(actor_repo, "")
 
-    print(repo_registry.movie.list())
-
-    print("\n")
-
     cli_api = CliApi(movie_repo, name_search)
-
-    ranking = cli_api.get_ranking()
-    print(ranking)
-
-    print("\nCreate movies :")
-    movie = cli_api.create_movie()
-    print(movie)
-
-    print("\nUpdate movies :")
-    movie = cli_api.update_movie()
-    print(movie)
