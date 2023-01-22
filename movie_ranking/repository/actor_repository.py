@@ -10,25 +10,31 @@ class ActorRepository(RepositoryInterface, DummyRepository):
         DummyRepository.config(self, configuration_str)
 
     def get(self, pk: int) -> Actor:
-        return self.objects[0]
+        return self.objects[pk]
 
     def create(self, actor: Actor) -> Actor:
-        return self.objects[0]
+
+        if actor.pk in self.objects:
+            raise KeyError("Object is already added")
+
+        self.objects[actor.pk] = actor
+        return self.objects[actor.pk]
 
     def update(self, actor: Actor) -> Actor:
-        return self.objects[0]
+        self.objects[actor.pk] = actor
+        return actor
 
     def list(self, **kwargs) -> List[Actor]:
-        return self.objects
+        return list(self.objects.values())
 
     def delete(self, pk: int):
-        return True
+        if pk in self.objects:
+            del self.objects[pk]
 
     def fill_mock(self):
         for i in range(10):
-            self.objects.append(
-                Actor(i, f"Actor_{i}", i + 30)
-            )
+            actor = Actor(i, f"Actor_{i}", i + 30)
+            self.objects[actor.pk] = actor
 
     def __str__(self):
         return "actor"

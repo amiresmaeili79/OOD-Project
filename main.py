@@ -7,9 +7,9 @@ from movie_ranking.service_layer.name_search import NameSearch
 if __name__ == "__main__":
     repo_registry = RepositoryRegistry()
     movie_repo = MovieRepository()
-    movie_repo.fill_mock()
+    # movie_repo.fill_mock()
     actor_repo = ActorRepository()
-    actor_repo.fill_mock()
+    # actor_repo.fill_mock()
 
     name_search = NameSearch()
 
