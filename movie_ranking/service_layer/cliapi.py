@@ -125,7 +125,7 @@ class CliApi(ApiInterface):
         comments = []
         pk = self.repository.get_max_pk() + 1
 
-        movie = Movie(pk, rating, 0, name, genre, duration, year, description, awards, actors, comments)
+        movie = Movie(pk, rating, 1, name, genre, duration, year, description, awards, actors, comments)
 
         return self.repository.create(movie)
 
