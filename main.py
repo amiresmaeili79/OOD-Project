@@ -16,4 +16,4 @@ if __name__ == "__main__":
     repo_registry.add_repository(movie_repo, "")
     repo_registry.add_repository(actor_repo, "")
 
-    cli_api = CliApi(movie_repo, name_search)
+    cli_api = CliApi(movie_repo, actor_repo, name_search)
