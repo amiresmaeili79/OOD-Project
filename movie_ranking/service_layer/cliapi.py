@@ -25,11 +25,13 @@ class CliApi(ApiInterface):
             print("2 - Create movie")
             print("3 - Update movie")
             print("4 - Get rankings")
-            print("5 - Exit")
+            print("5 - Add comment")
+            print("6 - Add rating")
+            print("7 - Exit")
 
             option = input("option: ")
 
-            if option == "5":
+            if option == "7":
                 break
 
             match int(option):
@@ -41,11 +43,16 @@ class CliApi(ApiInterface):
                     m = self.update_movie()
                 case 4:
                     ranking = self.get_ranking()
+                case 5:
+                    self.add_comment()
+                case 6:
+                    self.add_rating()
 
     def search(self) -> List[Movie]:
-        print("searching")
         name = input("Enter the name:")
-        return self.search_approach.search(self.repository.list(), name)
+        m = self.search_approach.search(self.repository.list(), name)
+        print(m[0].awards[0].name)
+        print(m[0].stars[0].name)
 
     def create_movie(self) -> Movie:
 
@@ -98,18 +105,54 @@ class CliApi(ApiInterface):
         return self.repository.create(movie)
 
     def update_movie(self) -> Movie:
-        pk = int(input("insert movie pk:"))
-        name = input("insert movie name:")
-        rating = int(input("insert movie rating:"))
-        genre = input("insert movie genre:")
-        duration = int(input("insert movie duration:"))
-        year = int(input("insert movie year:"))
-        description = input("insert movie description:")
-        awards = []
-        actors = []
-        comments = []
 
-        movie = Movie(pk, rating, name, genre, duration, year, description, awards, actors, comments)
+        name = input("insert movie name:")
+        movie = self.repository.get_by_name(name)[0]
+
+        movie.name = input("insert movie name:")
+        movie.rating = int(input("insert movie rating:"))
+        movie.genre = input("insert movie genre:")
+        movie.duration = int(input("insert movie duration:"))
+        movie.year = int(input("insert movie year:"))
+        movie.description = input("insert movie description:")
+
+        actors = []
+
+        have_actors = input("Update actors ? \n (options : yes no):")
+        if have_actors == "yes":
+            while True:
+                name = input("Name :")
+                age = int(input("Age :"))
+                pk = self.actor_repository.get_max_pk() + 1
+
+                actor = Actor(pk, name, age)
+
+                self.actor_repository.create(actor)
+                actors.append(actor)
+
+                cont = input("Continue ? \n (options : yes no) :")
+                if cont == "no":
+                    break
+
+        awards = []
+
+        have_awards = input("Update awards ? \n (options : yes no) :")
+        if have_awards == "yes":
+            while True:
+                pk = int(uuid.uuid4())
+                name = input("Name :")
+                year = int(input("Year :"))
+
+                award = Award(pk, name, year)
+
+                awards.append(award)
+
+                cont = input("Continue ? \n (options : yes no) :")
+                if cont == "no":
+                    break
+
+        movie.awards = awards
+        movie.stars = actors
 
         return self.repository.update(movie)
 
@@ -122,15 +165,17 @@ class CliApi(ApiInterface):
 
     def add_comment(self) -> None:
         movie_name = input("Enter movie name:")
-        movie = Movie()
-        for m in self.repository.list():
-            if m.name == movie_name :
-                movie = m
-                break
+        movie = self.repository.get_by_name(movie_name)[0]
 
         comment = input("Your comment :")
         movie.comments.append(comment)
-
+        self.repository.update(movie)
 
     def add_rating(self) -> None:
-        pass
+        movie_name = input("Enter movie name:")
+        movie = self.repository.get_by_name(movie_name)[0]
+
+        rating = input("Enter rating:")
+        movie.rate(int(rating))
+        self.repository.update(movie)
+
