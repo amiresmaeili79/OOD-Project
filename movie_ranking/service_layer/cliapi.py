@@ -19,7 +19,7 @@ class CliApi(ApiInterface):
         self.search_approach = search
         self.actor_repository = actor_repository
 
-        while True :
+        while True:
             print("Choose one of options:")
             print("1 - Search movie")
             print("2 - Create movie")
@@ -50,9 +50,7 @@ class CliApi(ApiInterface):
 
     def search(self) -> List[Movie]:
         name = input("Enter the name:")
-        m = self.search_approach.search(self.repository.list(), name)
-        print(m[0].awards[0].name)
-        print(m[0].stars[0].name)
+        return self.search_approach.search(self.repository.list(), name)
 
     def create_movie(self) -> Movie:
 
