@@ -7,5 +7,5 @@ from movie_ranking.domain.movie import Movie
 class SearchInterface(ABC):
 
     @abstractmethod
-    def search(self, name) -> List[Movie]:
+    def search(self, movies, name) -> List[Movie]:
         pass
