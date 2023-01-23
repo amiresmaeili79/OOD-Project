@@ -9,6 +9,9 @@ class ActorRepository(RepositoryInterface, DummyRepository):
     def config(self, configuration_str: str):
         DummyRepository.config(self, configuration_str)
 
+    def get_max_pk(self) -> int:
+        return max(self.objects.values())
+
     def get(self, pk: int) -> Actor:
         return self.objects[pk]
 
