@@ -19,32 +19,33 @@ class CliApi(ApiInterface):
         self.search_approach = search
         self.actor_repository = actor_repository
 
-        print("Choose one of options:")
-        print("1 - Search movie")
-        print("2 - Create movie")
-        print("3 - Update movie")
-        print("4 - Get rankings")
-        print("5 - Update rankings")
+        while True :
+            print("Choose one of options:")
+            print("1 - Search movie")
+            print("2 - Create movie")
+            print("3 - Update movie")
+            print("4 - Get rankings")
+            print("5 - Exit")
 
-        option = input("option: ")
+            option = input("option: ")
 
-        match int(option):
-            case 1:
-                m = self.search()
-            case 2:
-                m = self.create_movie()
-            case 3:
-                m = self.update_movie()
-            case 4:
-                ranking = self.get_ranking()
-            case 5:
-                self.update_ranking()
+            if option == "5":
+                break
+
+            match int(option):
+                case 1:
+                    m = self.search()
+                case 2:
+                    m = self.create_movie()
+                case 3:
+                    m = self.update_movie()
+                case 4:
+                    ranking = self.get_ranking()
 
     def search(self) -> List[Movie]:
         print("searching")
         name = input("Enter the name:")
-        genre = input("Enter the type:")
-        self.search_approach.search(name)
+        return self.search_approach.search(self.repository.list(), name)
 
     def create_movie(self) -> Movie:
 
@@ -97,7 +98,7 @@ class CliApi(ApiInterface):
         return self.repository.create(movie)
 
     def update_movie(self) -> Movie:
-        pk = int(input("insert movie pk:"))  # What is pk
+        pk = int(input("insert movie pk:"))
         name = input("insert movie name:")
         rating = int(input("insert movie rating:"))
         genre = input("insert movie genre:")
@@ -121,5 +122,15 @@ class CliApi(ApiInterface):
 
     def add_comment(self) -> None:
         movie_name = input("Enter movie name:")
-        # finding movie
+        movie = Movie()
+        for m in self.repository.list():
+            if m.name == movie_name :
+                movie = m
+                break
+
         comment = input("Your comment :")
+        movie.comments.append(comment)
+
+
+    def add_rating(self) -> None:
+        pass
