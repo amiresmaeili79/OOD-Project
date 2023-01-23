@@ -7,7 +7,7 @@ class DummyRepository(AbstractRepository):
     """
 
     def __init__(self) -> None:
-        self.objects = []
+        self.objects = {}
 
     def config(self, configuration_str: str):
         # in dummy repo it is already configured

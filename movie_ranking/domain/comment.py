@@ -9,9 +9,7 @@ class Comment:
         self.datetime = datetime.datetime.now()
 
     def get_body(self):
-        # code
-        return True
+        return self.body
 
     def get_datetime(self):
-        # code
-        return True
+        return self.datetime

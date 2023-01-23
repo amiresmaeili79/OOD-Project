@@ -12,26 +12,31 @@ class MovieRepository(RepositoryInterface, DummyRepository):
         DummyRepository.config(self, configuration_str)
 
     def get(self, pk: int) -> Movie:
-        return self.objects[0]
+        return self.objects[pk]
 
     def create(self, movie: Movie) -> Movie:
-        return self.objects[0]
+        if movie.pk in self.objects:
+            raise KeyError("Object is already added")
+
+        self.objects[movie.pk] = movie
+        return self.objects[movie.pk]
 
     def update(self, movie: Movie) -> Movie:
-        return self.objects[0]
+        self.objects[movie.pk] = movie
+        return movie
 
     def list(self, **kwargs) -> List[Movie]:
-        return self.objects
+        return list(self.objects.values())
 
     def delete(self, pk: int):
-        return True
+        del self.objects[pk]
 
     def fill_mock(self):
         for i in range(10):
             movie = Movie(i, i, f"Movie_{i}", f"Genre_{i}", 120 + 10 * i, 1995 + i, f"Description_{i}", [
                 Award(i, f"Award_{i}", 1995 + i), Award(i, f"Award_{i + 1}", 1998 + i)
             ], [Actor(i, f"Actor_{i}", 30 + i), Actor(i, f"Actor_{i + 1}", 40 + i)])
-            self.objects.append(movie)
+            self.objects[movie.pk] = movie
 
     def __str__(self):
         return "movie"

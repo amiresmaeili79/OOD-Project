@@ -6,17 +6,13 @@ class Award:
         self.year = year
 
     def get_name(self):
-        # code
-        return True
+        return self.name
 
     def set_name(self, name: str):
-        # code
-        return True
+        self.name = name
 
     def get_year(self):
-        # code
-        return True
+        return self.year
 
     def set_year(self, year: int):
-        # code
-        return True
+        self.year = year
