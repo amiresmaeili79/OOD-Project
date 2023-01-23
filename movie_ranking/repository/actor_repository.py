@@ -10,6 +10,8 @@ class ActorRepository(RepositoryInterface, DummyRepository):
         DummyRepository.config(self, configuration_str)
 
     def get_max_pk(self) -> int:
+        if len(self.objects.values()) == 0:
+            return 0
         return max(self.objects.values())
 
     def get(self, pk: int) -> Actor:
