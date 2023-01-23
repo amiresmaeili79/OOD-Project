@@ -7,7 +7,7 @@ from movie_ranking.domain.movie import Movie
 class ApiInterface(ABC):
 
     @abstractmethod
-    def search(self, name, type) -> List[Movie]:
+    def search(self) -> List[Movie]:
         raise NotImplementedError("implement me!")
 
     @abstractmethod
