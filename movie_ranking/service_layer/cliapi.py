@@ -155,7 +155,14 @@ class CliApi(ApiInterface):
         return self.repository.update(movie)
 
     def get_ranking(self) -> List[Movie]:
-        return self.repository.list().sort(lambda x: x.rating)
+        print(len(self.repository.list()))
+        print(self.repository.list()[0].name)
+        ranking = sorted(self.repository.list(), key=lambda x: x.rating, reverse=True)
+        i = 1
+        for r in ranking:
+
+            print(i, "-", r.name)
+            i += 1
 
     def update_ranking(self) -> None:
         print("Update rankings")
