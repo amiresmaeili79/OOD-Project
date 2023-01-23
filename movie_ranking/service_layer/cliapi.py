@@ -1,6 +1,10 @@
 from typing import List
 
+import uuid
+
 from movie_ranking.domain.movie import Movie
+from movie_ranking.domain.actor import Actor
+from movie_ranking.domain.award import Award
 from movie_ranking.repository.repository_interface import RepositoryInterface
 from .api_interface import ApiInterface
 from .search_interface import SearchInterface
@@ -10,9 +14,10 @@ import argparse
 
 class CliApi(ApiInterface):
 
-    def __init__(self, repository: RepositoryInterface, search: SearchInterface) -> None:
+    def __init__(self, repository: RepositoryInterface, actor_repository : RepositoryInterface , search: SearchInterface) -> None:
         self.repository = repository
         self.search_approach = search
+        self.actor_repository = actor_repository
 
         print("Choose one of options:")
         print("1 - Search movie")
@@ -49,11 +54,44 @@ class CliApi(ApiInterface):
         duration = int(input("insert movie duration:"))
         year = int(input("insert movie year:"))
         description = input("insert movie description:")
-        awards = []
         actors = []
+
+        have_actors = input("Actors ? \n options : yes no")
+        if have_actors == "yes":
+            while True :
+                name = input("Name :")
+                age = int(input("Age :"))
+                pk = self.actor_repository.get_max_pk() + 1
+
+                actor = Actor(pk, name, age)
+
+                self.actor_repository.create(actor)
+                actors.append(actor)
+
+                cont = input("Continue ? \n options : yes no")
+                if cont == "no" :
+                    break
+
+        awards = []
+
+        have_awards = input("Awards ? \n options : yes no")
+        if have_awards == "yes":
+            while True:
+                pk = int(uuid.uuid4())
+                name = input("Name :")
+                year = int(input("Year :"))
+
+                award = Award(pk, name, year)
+
+                awards.append(award)
+
+                cont = input("Continue ? \n options : yes no")
+                if cont == "no":
+                    break
+
         comments = []
 
-        movie = Movie(pk, rating, name, genre, duration, year, description, awards, actors, comments)
+        movie = Movie(pk, rating, 0, name, genre, duration, year, description, awards, actors, comments)
 
         return self.repository.create(movie)
 
