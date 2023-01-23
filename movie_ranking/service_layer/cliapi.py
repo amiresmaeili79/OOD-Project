@@ -23,20 +23,17 @@ class CliApi(ApiInterface):
 
         option = input("option: ")
 
-        if int(option) == 1:
-            m = self.search()
-
-        if int(option) == 2:
-            m = self.create_movie()
-
-        if int(option) == 3:
-            m = self.update_movie()
-
-        if int(option) == 4:
-            ranking = self.get_ranking()
-
-        if int(option) == 5:
-            self.update_ranking()
+        match int(option) :
+            case 1:
+                m = self.search()
+            case 2:
+                m = self.create_movie()
+            case 3:
+                m = self.update_movie()
+            case 4:
+                ranking = self.get_ranking()
+            case 5:
+                self.update_ranking()
 
     def search(self) -> List[Movie]:
         print("searching")
