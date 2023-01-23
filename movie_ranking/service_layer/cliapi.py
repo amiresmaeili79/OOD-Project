@@ -5,6 +5,7 @@ import uuid
 from movie_ranking.domain.movie import Movie
 from movie_ranking.domain.actor import Actor
 from movie_ranking.domain.award import Award
+from movie_ranking.domain.comment import Comment
 from movie_ranking.repository.repository_interface import RepositoryInterface
 from .api_interface import ApiInterface
 from .search_interface import SearchInterface
@@ -50,7 +51,31 @@ class CliApi(ApiInterface):
 
     def search(self) -> List[Movie]:
         name = input("Enter the name:")
-        return self.search_approach.search(self.repository.list(), name)
+        movies = self.search_approach.search(self.repository.list(), name)
+        print(len(movies))
+        if len(movies) > 0:
+            movie = movies[0]
+
+            print("==================================")
+            print(movie.name)
+            print(movie.genre, " - ", movie.year)
+            print("Rate : ", movie.rating)
+            print("Description", movie.description)
+            print("Stars:")
+            for s in movie.stars:
+                print(s.name)
+            print("\n")
+
+            print("Awards:")
+            for s in movie.awards:
+                print(s.name, " in ", s.year)
+            print("\n")
+
+            print("Comments:")
+            for s in movie.comments:
+                print(s.datetime, " : ", s.body)
+            print("\n")
+            print("==================================")
 
     def create_movie(self) -> Movie:
 
@@ -159,10 +184,14 @@ class CliApi(ApiInterface):
         print(self.repository.list()[0].name)
         ranking = sorted(self.repository.list(), key=lambda x: x.rating, reverse=True)
         i = 1
+        print("==================================")
+        print("Rankings :")
         for r in ranking:
 
             print(i, "-", r.name)
             i += 1
+
+        print("==================================")
 
     def update_ranking(self) -> None:
         print("Update rankings")
@@ -170,17 +199,24 @@ class CliApi(ApiInterface):
 
     def add_comment(self) -> None:
         movie_name = input("Enter movie name:")
-        movie = self.repository.get_by_name(movie_name)[0]
+        try:
+            movie = self.repository.get_by_name(movie_name)[0]
+        except:
+            print("Movie not found")
+            return
 
         comment = input("Your comment :")
-        movie.comments.append(comment)
+        movie.comments.append(Comment(comment))
         self.repository.update(movie)
 
     def add_rating(self) -> None:
         movie_name = input("Enter movie name:")
-        movie = self.repository.get_by_name(movie_name)[0]
+        try:
+            movie = self.repository.get_by_name(movie_name)[0]
+        except:
+            print("Movie not found")
+            return
 
         rating = input("Enter rating:")
         movie.rate(int(rating))
         self.repository.update(movie)
-
