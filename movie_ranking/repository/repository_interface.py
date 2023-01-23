@@ -11,6 +11,10 @@ class RepositoryInterface(ABC):
         raise NotImplementedError("implement me!")
 
     @abstractmethod
+    def get_by_name(self, *args, **kwargs):
+        raise NotImplementedError("implement me!")
+
+    @abstractmethod
     def config(self, configuration_str: str):
         raise NotImplementedError("implement me!")
 

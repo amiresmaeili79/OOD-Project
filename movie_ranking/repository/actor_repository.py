@@ -6,6 +6,9 @@ from .repository_interface import RepositoryInterface
 
 
 class ActorRepository(RepositoryInterface, DummyRepository):
+    def get_by_name(self, *args, **kwargs):
+        pass
+
     def config(self, configuration_str: str):
         DummyRepository.config(self, configuration_str)
 

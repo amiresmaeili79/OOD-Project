@@ -16,6 +16,14 @@ class MovieRepository(RepositoryInterface, DummyRepository):
             return 0
         return max(self.objects.values())
 
+    def get_by_name(self, name: str) -> List[Movie]:
+        result = []
+        for m in self.objects.values():
+            if m.name == name:
+                result.append(m)
+
+        return result
+
     def get(self, pk: int) -> Movie:
         return self.objects[pk]
 
