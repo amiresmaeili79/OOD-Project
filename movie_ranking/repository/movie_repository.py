@@ -14,7 +14,7 @@ class MovieRepository(RepositoryInterface, DummyRepository):
     def get_max_pk(self) -> int:
         if len(self.objects.values()) == 0:
             return 0
-        return max(self.objects.values())
+        return max(self.objects.keys())
 
     def get_by_name(self, name: str) -> List[Movie]:
         result = []
