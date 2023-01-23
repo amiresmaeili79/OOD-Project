@@ -47,7 +47,7 @@ class CliApi(ApiInterface):
         self.search_approach.search(name)
 
     def create_movie(self) -> Movie:
-        pk = int(input("insert movie pk:")) # What is pk
+
         name = input("insert movie name:")
         rating = int(input("insert movie rating:"))
         genre = input("insert movie genre:")
@@ -56,9 +56,9 @@ class CliApi(ApiInterface):
         description = input("insert movie description:")
         actors = []
 
-        have_actors = input("Actors ? \n options : yes no")
+        have_actors = input("Actors ? \n (options : yes no):")
         if have_actors == "yes":
-            while True :
+            while True:
                 name = input("Name :")
                 age = int(input("Age :"))
                 pk = self.actor_repository.get_max_pk() + 1
@@ -68,13 +68,13 @@ class CliApi(ApiInterface):
                 self.actor_repository.create(actor)
                 actors.append(actor)
 
-                cont = input("Continue ? \n options : yes no")
+                cont = input("Continue ? \n (options : yes no) :")
                 if cont == "no" :
                     break
 
         awards = []
 
-        have_awards = input("Awards ? \n options : yes no")
+        have_awards = input("Awards ? \n (options : yes no) :")
         if have_awards == "yes":
             while True:
                 pk = int(uuid.uuid4())
@@ -85,11 +85,12 @@ class CliApi(ApiInterface):
 
                 awards.append(award)
 
-                cont = input("Continue ? \n options : yes no")
+                cont = input("Continue ? \n (options : yes no) :")
                 if cont == "no":
                     break
 
         comments = []
+        pk = self.repository.get_max_pk() + 1
 
         movie = Movie(pk, rating, 0, name, genre, duration, year, description, awards, actors, comments)
 
@@ -117,3 +118,8 @@ class CliApi(ApiInterface):
     def update_ranking(self) -> None:
         print("Update rankings")
         pass
+
+    def add_comment(self) -> None:
+        movie_name = input("Enter movie name:")
+        # finding movie
+        comment = input("Your comment :")

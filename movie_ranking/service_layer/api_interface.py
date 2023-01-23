@@ -25,3 +25,7 @@ class ApiInterface(ABC):
     @abstractmethod
     def update_ranking(self) -> None:
         raise NotImplementedError("implement me!")
+
+    @abstractmethod
+    def add_comment(self) -> None:
+        raise NotImplementedError("implement me!")
