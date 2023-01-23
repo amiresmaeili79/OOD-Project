@@ -23,9 +23,10 @@ class Movie:
         self.comments = comments
 
     def rate(self, rating_num: int):
-        current_rate = self.rate * self.rate_cnts
+        current_rate = self.rating * self.rate_cnts
         self.rate_cnts += 1
-        self.rate = current_rate / self.rate_cnts
+        current_rate += rating_num
+        self.rating = current_rate / self.rate_cnts
 
     def get_rating(self):
         return self.rate

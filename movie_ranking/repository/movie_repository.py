@@ -11,6 +11,19 @@ class MovieRepository(RepositoryInterface, DummyRepository):
     def config(self, configuration_str: str):
         DummyRepository.config(self, configuration_str)
 
+    def get_max_pk(self) -> int:
+        if len(self.objects.values()) == 0:
+            return 0
+        return max(self.objects.keys())
+
+    def get_by_name(self, name: str) -> List[Movie]:
+        result = []
+        for m in self.objects.values():
+            if m.name == name:
+                result.append(m)
+
+        return result
+
     def get(self, pk: int) -> Movie:
         return self.objects[pk]
 

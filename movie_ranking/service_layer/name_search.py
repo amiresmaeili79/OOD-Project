@@ -5,5 +5,11 @@ from .search_interface import SearchInterface
 
 
 class NameSearch(SearchInterface):
-    def search(self, name) -> List[Movie]:
-        pass
+    def search(self, movies, name) -> List[Movie]:
+        result = []
+        for m in movies:
+            if m.name == name:
+                movie = m
+                result.append(m)
+
+        return result
