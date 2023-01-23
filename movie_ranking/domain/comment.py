@@ -3,8 +3,7 @@ import datetime
 
 class Comment:
 
-    def __init__(self, pk: int, body: str):
-        self.pk = pk
+    def __init__(self, body: str):
         self.body = body
         self.datetime = datetime.datetime.now()
 

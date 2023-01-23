@@ -79,7 +79,7 @@ class TestAward(TestCase):
 class TestComment(TestCase):
 
     def setUp(self) -> None:
-        self.comment = Comment(4, "Great Movie!")
+        self.comment = Comment("Great Movie!")
 
     def test_get_body(self):
         self.assertEqual(self.comment.get_body(), "Great Movie!")
