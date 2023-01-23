@@ -7,6 +7,10 @@ class RepositoryInterface(ABC):
     """
 
     @abstractmethod
+    def get_max_pk(self) -> int:
+        raise NotImplementedError("implement me!")
+
+    @abstractmethod
     def config(self, configuration_str: str):
         raise NotImplementedError("implement me!")
 
