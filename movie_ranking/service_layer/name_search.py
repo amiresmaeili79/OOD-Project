@@ -6,8 +6,10 @@ from .search_interface import SearchInterface
 
 class NameSearch(SearchInterface):
     def search(self, movies, name) -> List[Movie]:
-        movies
-        for m in self.repository.list():
-            if m.name == movie_name:
+        result = []
+        for m in movies:
+            if m.name == name:
                 movie = m
-                break
+                result.append(m)
+
+        return result
