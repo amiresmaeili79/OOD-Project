@@ -23,7 +23,7 @@ class CliApi(ApiInterface):
 
         option = input("option: ")
 
-        match int(option) :
+        match int(option):
             case 1:
                 m = self.search()
             case 2:
@@ -39,7 +39,7 @@ class CliApi(ApiInterface):
         print("searching")
         name = input("Enter the name:")
         genre = input("Enter the type:")
-        self.search_approach.search(name, genre)
+        self.search_approach.search(name)
 
     def create_movie(self) -> Movie:
         pk = int(input("insert movie pk:")) # What is pk
@@ -53,17 +53,28 @@ class CliApi(ApiInterface):
         actors = []
         comments = []
 
-        movie = Movie(pk, rating, name, genre, duration, year, description, awards, actors, comments )
+        movie = Movie(pk, rating, name, genre, duration, year, description, awards, actors, comments)
 
         return self.repository.create(movie)
 
     def update_movie(self) -> Movie:
-        print("insert movie new name")
-        return self.repository.update(Movie(0, 0, "", "", 0, 0, "", [], []))
+        pk = int(input("insert movie pk:"))  # What is pk
+        name = input("insert movie name:")
+        rating = int(input("insert movie rating:"))
+        genre = input("insert movie genre:")
+        duration = int(input("insert movie duration:"))
+        year = int(input("insert movie year:"))
+        description = input("insert movie description:")
+        awards = []
+        actors = []
+        comments = []
+
+        movie = Movie(pk, rating, name, genre, duration, year, description, awards, actors, comments)
+
+        return self.repository.update(movie)
 
     def get_ranking(self) -> List[Movie]:
-        print("rankings :")
-        return self.repository.list()
+        return self.repository.list().sort(lambda x: x.rating)
 
     def update_ranking(self) -> None:
         print("Update rankings")
