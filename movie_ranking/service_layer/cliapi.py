@@ -24,9 +24,7 @@ class CliApi(ApiInterface):
         option = input("option: ")
 
         if int(option) == 1:
-            name = input("Enter the name:")
-            type = input("Enter the type:")
-            m = self.search(name, type)
+            m = self.search()
 
         if int(option) == 2:
             m = self.create_movie()
@@ -40,13 +38,27 @@ class CliApi(ApiInterface):
         if int(option) == 5:
             self.update_ranking()
 
-    def search(self, name, type) -> List[Movie]:
+    def search(self) -> List[Movie]:
         print("searching")
-        pass
+        name = input("Enter the name:")
+        genre = input("Enter the type:")
+        self.search_approach.search(name, genre)
 
     def create_movie(self) -> Movie:
-        print("insert movie name:")
-        return self.repository.create(Movie(0, 0, "", "", 0, 0, "", [], []))
+        pk = int(input("insert movie pk:")) # What is pk
+        name = input("insert movie name:")
+        rating = int(input("insert movie rating:"))
+        genre = input("insert movie genre:")
+        duration = int(input("insert movie duration:"))
+        year = int(input("insert movie year:"))
+        description = input("insert movie description:")
+        awards = []
+        actors = []
+        comments = []
+
+        movie = Movie(pk, rating, name, genre, duration, year, description, awards, actors, comments )
+
+        return self.repository.create(movie)
 
     def update_movie(self) -> Movie:
         print("insert movie new name")
