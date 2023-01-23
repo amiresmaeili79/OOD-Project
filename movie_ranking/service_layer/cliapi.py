@@ -53,7 +53,9 @@ class CliApi(ApiInterface):
         name = input("Enter the name:")
         movies = self.search_approach.search(self.repository.list(), name)
         print(len(movies))
-        if len(movies) > 0:
+        if len(movies) == 0:
+            print("No movie found")
+        else:
             movie = movies[0]
 
             print("==================================")
