@@ -18,3 +18,5 @@ It has a DDD pattern which has 3 layers :
 * Domain
 * Repository
 * Service 
+
+![Diagram](https://github.com/parsaeisa/OOD-Project/blob/master/diagram.png)
